@@ -4,8 +4,8 @@ A TypeScript implementation of a byte (octet) allowing easy bit manipulations.
 ## 1. Description 
 This library provides a simple implementation of a byte (aka octet) in a TypeScript class. I developed this "library" (which consists of merely one TypeScript class) for two purposes:
 - for use in my EnOcean-Core library and associated files, and
-- to understand, test and streamline my development process. 
-Hence: Feel free to use it, if it helps for your project, but do not expect rocket science.
+- to understand, test and (hopefully) streamline my development process for more complex projects. 
+Hence: Feel free to use it, if it helps, but do not expect rocket science. :)
 
 
 ## 2. Installation
@@ -24,13 +24,25 @@ The library also comes with an online [documentation](index.html). A good starti
 ### 3.1 Importing the module
 To use any of the functionality we need to import the module. 
 ```typescript
-import * as EnOcean from "enocean-core"
+import { Byte } from "@henningkerstan/byte"
 ```
 
-### 3.2 Working with bytes
+### 3.2 Examples
+Here are some toy examples - you can also have a look at the Jasmine spec (aka test script) for more examples.
 ```typescript
+const byte1 = Byte.allZero()
+byte1.setBit(1, 3)
+console.log(byte1.toStringLSB())
 
+const byte2 = Byte.fromUInt8LSB(123)
+console.log(byte2.toStringLSB())
+console.log(byte2.toStringMSB())
 ```
+
+## 4. Contributing
+Contact the main author ([Henning Kerstan](https://henningkerstan.de)) if you want to contribute. More details will be available here soon.
+
+Note that this project uses [semantic versioning](https://semver.org/).
 
 
 ## 5. License
