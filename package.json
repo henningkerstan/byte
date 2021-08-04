@@ -8,7 +8,7 @@
     "doc": "npx typedoc",
     "build": "npx tsc",
     "all": "npm run build && npm run doc",
-    "lint": "eslint --ignore-path .gitignore --fix src/**/*.ts tests/**/*.ts"
+    "lint": "eslint --ignore-path .gitignore --fix src/**/*.ts spec/**/*.ts"
   },
   "repository": {
     "type": "git",
