@@ -15,7 +15,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const TSConsoleReporter = require('jasmine-ts-console-reporter');
- 
-jasmine.getEnv().clearReporters(); // Clear default console reporter
-jasmine.getEnv().addReporter(new TSConsoleReporter());
+const SpecReporter = require('jasmine-spec-reporter').SpecReporter
+
+jasmine.getEnv().clearReporters() // remove default reporter logs
+jasmine.getEnv().addReporter(
+  new SpecReporter({
+    // add jasmine-spec-reporter
+    spec: {
+      displayPending: true,
+    },
+  })
+)

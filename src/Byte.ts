@@ -37,7 +37,7 @@ export class Byte {
 
     let val = 0
     for (let i = begin; i < begin + size; i++) {
-      val += this.getBit(i) << (i - begin)
+      val += this.getBitLSB(i) << (i - begin)
     }
     return val
   }
@@ -73,7 +73,7 @@ export class Byte {
 
     for (let i = begin; i < begin + size; i++) {
       const bit = (value & (1 << (i - begin))) === 0 ? 0 : 1
-      this.setBit(i, bit)
+      this.setBitLSB(i, bit)
     }
   }
 
@@ -90,7 +90,7 @@ export class Byte {
     // compute big endian representation
     let val = 0
     for (let i = begin; i < begin + size; i++) {
-      val += this.getBit(i) << (begin + size - i)
+      val += this.getBitLSB(i) << (begin + size - i)
     }
 
     return val
@@ -105,19 +105,19 @@ export class Byte {
   }
 
   /**
-   * Get the bit at the supplied offset.
+   * Get the bit at the supplied offset using LSB ordering.
    * @param offset The position (integer from 0 to 7).
    */
-  getBit(offset: number): number {
+  getBitLSB(offset: number): number {
     return (this.int8 & (1 << offset)) === 0 ? 0 : 1
   }
 
   /**
-   * Set the bit at the supplied offset.
+   * Set the bit at the supplied offset using LSB ordering.
    * @param offset The position (integer from 0 to 7).
    * @param value Either 0 or 1, default value is 1.
    */
-  setBit(offset: number, value = 1): void {
+  setBitLSB(offset: number, value = 1): void {
     switch (value) {
       case 1:
         this.int8 = this.int8 | (1 << offset)
@@ -144,7 +144,7 @@ export class Byte {
     let s = 'Byte {\n'
     s += '  binary: '
     for (let i = 1; i <= 8; i++) {
-      s += this.getBit(i - 1).toString()
+      s += this.getBitLSB(i - 1).toString()
       if (i % 2 === 0) {
         s += ' '
       }
@@ -161,13 +161,21 @@ export class Byte {
     return s
   }
 
-  toBinaryString(): string {
+  /** Convert to binary string */
+  toBinaryStringLSB(): string {
     let s = ''
-    for (let i = 1; i <= 8; i++) {
-      s += this.getBit(i - 1).toString()
-      if (i % 2 === 0) {
-        s += ' '
-      }
+    for (let i = 0; i <= 7; i++) {
+      s += this.getBitLSB(i).toString()
+    }
+
+    return s
+  }
+
+  /** Convert to binary string */
+  toBinaryStringMSB(): string {
+    let s = ''
+    for (let i = 7; i >= 0; i--) {
+      s += this.getBitLSB(i).toString()
     }
 
     return s
