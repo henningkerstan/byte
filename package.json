@@ -6,7 +6,7 @@
     "lib/**/*"
   ],
   "main": "./lib/Byte.js",
-  "types": "./lib/index.d.ts",
+  "types": "./lib/Byte.d.ts",
   "scripts": {
     "test": "npx jasmine-ts --config=jasmine.json",
     "doc": "npx typedoc",
