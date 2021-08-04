@@ -15,8 +15,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const { execSync } = require("child_process");
-const { exit } = require('process');
+const { execSync } = require("child_process")
+const { exit } = require('process')
+const fs = require('fs')
 
 console.log('Executing preversion tests.')
 
@@ -66,9 +67,6 @@ execSync('npm run test')
 console.log('Checking modules can be built')
 execSync('npm run build')
 
-// run documentation
-console.log('Checking documentation can be built')
-execSync('npm run doc')
 
 // check that the previous commands did not lead to changes
 console.log('Checking that previous steps did not lead to unclean branch')
@@ -78,3 +76,10 @@ if(newGitStatus.toString() !== ""){
   console.log(newGitStatus.toString())
   exit(-3)
 }
+
+// run documentation
+console.log('Checking documentation can be built')
+execSync('mv docs docs.SAVE')
+execSync('npm run doc')
+fs.rmdirSync(dir, { recursive: true })
+execSync('mv docs.SAVE docs')
