@@ -16,7 +16,7 @@
 // limitations under the License.
 
 /**
- * A class implementing a representation of a byte (octet).
+ * A class implementing a byte (octet).
  */
 export class Byte {
   /** The internal representation (LSB0 bit ordering).
@@ -37,7 +37,7 @@ export class Byte {
 
     let val = 0
     for (let i = begin; i < begin + size; i++) {
-      val += this.getBitLSB(i) << (i - begin)
+      val += this.getBit(i) << (i - begin)
     }
     return val
   }
@@ -73,24 +73,23 @@ export class Byte {
 
     for (let i = begin; i < begin + size; i++) {
       const bit = (value & (1 << (i - begin))) === 0 ? 0 : 1
-      this.setBitLSB(i, bit)
+      this.setBit(i, bit)
     }
   }
 
   /**
    * Compute unsigned integer value with most significant bit first.
    * @param begin Bit offset to be interpreted as MSB.
-   * @param end Bit offset to be interpreted as LSB.
+   * @param end Size in bits; default is all remaining bits (8 - begin); must be >= 0 and satisfy (begin + size) <= 8.
    */
   public readUIntMSB(begin = 0, size: number = 8 - begin): number {
     if (begin + size > 8) {
       throw new Error('Out of bounds (begin + size exceeds 8)')
     }
 
-    // compute big endian representation
     let val = 0
     for (let i = begin; i < begin + size; i++) {
-      val += this.getBitLSB(i) << (begin + size - i)
+      val += this.getBit(i) << (begin + size - i)
     }
 
     return val
@@ -100,15 +99,30 @@ export class Byte {
    * Construct a byte based on given numeric value.
    * @param val Initial value (number will be interpreted as LSB0); default is 0.
    */
-  constructor(val = 0) {
+  private constructor(val = 0) {
     this.int8 = val
+  }
+
+  /** Creates a new Byte with all bits set to 0. */
+  static allZero(): Byte {
+    return new Byte(0)
+  }
+
+  /** Creates a new Byte with all bits set to 1. */
+  static allOne(): Byte {
+    return new Byte(255)
+  }
+
+  /** Creates a new Byte with bits set according to the supplied argument interpreted as unsigned integer with LSB. */
+  static fromUInt8LSB(val = 0): Byte {
+    return new Byte(val)
   }
 
   /**
    * Get the bit at the supplied offset using LSB ordering.
    * @param offset The position (integer from 0 to 7).
    */
-  getBitLSB(offset: number): number {
+  getBit(offset: number): number {
     return (this.int8 & (1 << offset)) === 0 ? 0 : 1
   }
 
@@ -117,7 +131,7 @@ export class Byte {
    * @param offset The position (integer from 0 to 7).
    * @param value Either 0 or 1, default value is 1.
    */
-  setBitLSB(offset: number, value = 1): void {
+  setBit(offset: number, value = 1): void {
     switch (value) {
       case 1:
         this.int8 = this.int8 | (1 << offset)
@@ -140,42 +154,21 @@ export class Byte {
     this.int8 = this.int8 & ~(1 << offset)
   }
 
-  toString(): string {
-    let s = 'Byte {\n'
-    s += '  binary: '
-    for (let i = 1; i <= 8; i++) {
-      s += this.getBitLSB(i - 1).toString()
-      if (i % 2 === 0) {
-        s += ' '
-      }
-    }
-
-    s += '\n'
-    s += '  uIntLSB(): ' + this.readUIntLSB().toString()
-    s += ' (0x' + this.readUIntLSB().toString(16).toUpperCase() + ')'
-    s += ', '
-    s += '  uIntMSB(): ' + this.readUIntMSB().toString()
-    s += ' (0x' + this.readUIntMSB().toString(16).toUpperCase() + ')\n'
-    s += '}'
-
-    return s
-  }
-
-  /** Convert to binary string */
-  toBinaryStringLSB(): string {
+  /** Convert to 8 character string of 0s and 1s (least significant bit first). */
+  toStringLSB(): string {
     let s = ''
     for (let i = 0; i <= 7; i++) {
-      s += this.getBitLSB(i).toString()
+      s += this.getBit(i).toString()
     }
 
     return s
   }
 
-  /** Convert to binary string */
-  toBinaryStringMSB(): string {
+  /** Convert to 8 character string of 0s and 1s (most significant bit first). */
+  toStringMSB(): string {
     let s = ''
     for (let i = 7; i >= 0; i--) {
-      s += this.getBitLSB(i).toString()
+      s += this.getBit(i).toString()
     }
 
     return s

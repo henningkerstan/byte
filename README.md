@@ -1,9 +1,12 @@
 # byte
-A TypeScript implementation of a byte (octet) allowing easy bit manipulation. I 
-developed this mainly for use in my EnOcean-Core library and associated files.
+A TypeScript implementation of a byte (octet) allowing easy bit manipulations. 
 
 ## 1. Description 
-This library provides a simple implementation of a byte (aka octet) in a TypeScript class.
+This library provides a simple implementation of a byte (aka octet) in a TypeScript class. I developed this "library" (which consists of merely one TypeScript class) for two purposes:
+- for use in my EnOcean-Core library and associated files, and
+- to understand, test and streamline my development process. 
+Hence: Feel free to use it, if it helps for your project, but do not expect rocket science.
+
 
 ## 2. Installation
 This library is available as a Node.js-module. You can thus use Node.js' package manager `npm` to install the latest production version from the [npm registry](https://npmjs.com) by executing
@@ -12,10 +15,11 @@ This library is available as a Node.js-module. You can thus use Node.js' package
 
 in your Node.js project's repository. This library does not require/install any dependencies.
 
+
 ## 3. Usage
 Since this library is written in TypeScript, you can use it both with TypeScript as well as with plain JavaScript. Below you can find short examples to get you started in both languages. 
 
-The library also comes with an online [documentation](docs/index.html). A good starting point for further reading is the documentation of the Byte class. Moreover, as this documentation is generated from source code comments using [TypeDoc](https://typedoc.org), a supported editor (like [Visual Studio Code](https://code.visualstudio.com/)) can provide on-the-fly information on functions, parameters, etc..
+The library also comes with an online [documentation](index.html). A good starting point for further reading is the documentation of the [Byte](classes/Byte.html) class. Moreover, as this documentation is generated from source code comments using [TypeDoc](https://typedoc.org), a supported editor (like [Visual Studio Code](https://code.visualstudio.com/)) can provide on-the-fly information on functions, parameters, etc..
 
 ### 3.1 Importing the module
 To use any of the functionality we need to import the module. 
@@ -24,6 +28,9 @@ import * as EnOcean from "enocean-core"
 ```
 
 ### 3.2 Working with bytes
+```typescript
+
+```
 
 
 ## 5. License

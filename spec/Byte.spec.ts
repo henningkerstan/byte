@@ -19,37 +19,37 @@
 import { Byte } from '../src/Byte'
 
 describe('A Byte', () => {
-  it('shall satisfy the invariant "(new Byte(i)).readUIntLSB() == i" for all 0 <= i <=255', () => {
+  it('shall satisfy the invariant "(Byte.fromUInt8LSB(i)).readUIntLSB() == i" for all 0 <= i <=255', () => {
     for (let i = 0; i <= 255; i++) {
-      const byte = new Byte(i)
+      const byte = Byte.fromUInt8LSB(i)
       expect(byte.readUIntLSB()).toBe(i)
     }
   })
 
   it('shall satisfy "byte.writeUIntLSB(i) => byte.readUIntLSB() == i" for all 0 <= i <= 255', () => {
-    const byte = new Byte(0)
+    const byte = Byte.allZero()
     for (let i = 0; i <= 255; i++) {
       byte.writeUIntLSB(i)
       expect(byte.readUIntLSB()).toBe(i)
     }
   })
 
-  it('shall satisfy byte.', () => {
-    const byte = new Byte(0)
+  it("shall satisfy byte.toStringLSB() == byte.toStringMSB().split('').reverse().join('')", () => {
+    const byte = Byte.allZero()
     for (let i = 0; i <= 255; i++) {
       byte.writeUIntLSB(i)
-      expect(byte.toBinaryStringLSB()).toBe(
-        byte.toBinaryStringMSB().split('').reverse().join(''),
+      expect(byte.toStringLSB()).toBe(
+        byte.toStringMSB().split('').reverse().join(''),
       )
     }
   })
 
   it('shall satisfy some sanity tests', () => {
-    const byte = new Byte(123)
+    const byte = Byte.fromUInt8LSB(123)
     // in LSB: 11011110
     // in MSB: 01111011
 
-    expect(byte.toBinaryStringLSB()).toBe('11011110')
+    expect(byte.toStringLSB()).toBe('11011110')
 
     // expect(byte.readUIntLSB(0,3)).toBe(11)
   })
