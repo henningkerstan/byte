@@ -66,10 +66,6 @@ execSync('npm run test')
 console.log('Checking modules can be built')
 execSync('npm run build')
 
-// run documentation
-console.log('Checking documentation can be built')
-execSync('npm run doc')
-
 // check that the previous commands did not lead to changes
 console.log('Checking that previous steps did not lead to unclean branch')
 const newGitStatus = execSync('git status --porcelain')
@@ -78,3 +74,7 @@ if(newGitStatus.toString() !== ""){
   console.log(newGitStatus.toString())
   exit(-3)
 }
+
+// run documentation
+console.log('Checking documentation can be built')
+execSync('npm run doc')
