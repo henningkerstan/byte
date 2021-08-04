@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "description": "A TypeScript implementation of a byte (octet) allowing easy bit manipulations.",
   "files": [
-    "lib/**/*",
-    "docs/**/*"
+    "lib/**/*"
   ],
   "main": "./lib/Byte.js",
   "scripts": {
