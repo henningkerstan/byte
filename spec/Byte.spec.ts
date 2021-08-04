@@ -1,5 +1,5 @@
 // Project: @henningkerstan/byte
-// File: Byte.test.ts
+// File: Byte.spec.ts
 //
 // Copyright 2020 Henning Kerstan
 //
@@ -33,43 +33,4 @@ describe('A Byte', () => {
       expect(byte.readUIntLSB()).toBe(i)
     }
   })
-
-  it('shall ...', () => {
-    //
-  })
-
-  // // let byte = new Byte(123)
-  // // console.log(byte.toString())
-
-  // // console.log('uIntLSB(0, 3) = ' + byte.readUIntLSB(0, 4)) // 11
-  // // console.log('uIntLSB(1, 3) = ' + byte.readUIntLSB(1, 3)) // 5
-
-  // // console.log('uIntMSB(0, 3) = ' + byte.uIntMSB(0, 4)) // 13
-  // // console.log('uIntMSB(1, 3) = ' + byte.uIntMSB(1, 3)) // 5
-
-  // // byte = new Byte(0)
-  // // byte.writeUIntLSB(10, 1, 4)
-  // // console.log(byte.toString())
-
-  // for (let size = 0; size < 9; size++) {
-  //   const max = (1 << size) - 1
-
-  //   console.log('Testing size: ' + size + ' bits; range: 0-' + max)
-
-  //   for (let begin = 0; begin + size < 9; begin++) {
-  //     byte = new Byte(0)
-  //     console.log('  Beginning at offset ' + begin)
-
-  //     for (let val = 0; val <= max; val++) {
-  //       byte.writeUIntLSB(val, begin, size)
-  //       const readValue = byte.readUIntLSB(begin, size)
-  //       let msg = '    Wrote value ' + val
-  //       msg += '; read value ' + readValue
-  //       msg += '; binary: ' + byte.toBinaryString()
-  //       msg += val == readValue ? ' OK' : ' FAIL'
-  //       console.log(msg)
-  //     }
-  //   }
-  // }
-  // })
 })
