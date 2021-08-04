@@ -1,12 +1,12 @@
 {
   "name": "@henningkerstan/byte",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A TypeScript implementation of a byte (octet) allowing easy bit manipulations.",
   "files": [
     "lib/**/*"
   ],
   "main": "./lib/Byte.js",
-  "types": "./lib/index.d.ts",
+  "types": "./lib/Byte.d.ts",
   "scripts": {
     "test": "npx jasmine-ts --config=jasmine.json",
     "doc": "npx typedoc",
