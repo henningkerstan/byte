@@ -20,7 +20,7 @@ in your Node.js project's repository. This library does not require/install any 
 ## 3. Usage
 Since this library is written in TypeScript, you can use it both with TypeScript as well as with plain JavaScript. Below you can find short examples to get you started in both languages. 
 
-The library also comes with an online [documentation](index.html). A good starting point for further reading is the documentation of the [Byte](classes/Byte.html) class. Moreover, as this documentation is generated from source code comments using [TypeDoc](https://typedoc.org), a supported editor (like [Visual Studio Code](https://code.visualstudio.com/)) can provide on-the-fly information on functions, parameters, etc..
+The library also comes with an online [documentation](https://henningkerstan.github.io/byte/). A good starting point for further reading is the documentation of the [Byte](https://henningkerstan.github.io/byte/classes/Byte.html) class. Moreover, as this documentation is generated from source code comments using [TypeDoc](https://typedoc.org), a supported editor (like [Visual Studio Code](https://code.visualstudio.com/)) can provide on-the-fly information on functions, parameters, etc..
 
 ### 3.1 Importing the module
 To use any of the functionality we need to import the module. 
