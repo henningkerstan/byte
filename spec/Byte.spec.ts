@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// class test for Byte class
+// specification/tests for the Byte class
 import { Byte } from '../src/Byte'
 
 describe('A Byte', () => {
@@ -44,13 +44,14 @@ describe('A Byte', () => {
     }
   })
 
-  it('shall satisfy some sanity tests', () => {
+  it('shall satisfy some sanity checks', () => {
     const byte = Byte.fromUInt8LSB(123)
     // in LSB: 11011110
     // in MSB: 01111011
 
     expect(byte.toStringLSB()).toBe('11011110')
 
+    // TODO: add more tests here
     // expect(byte.readUIntLSB(0,3)).toBe(11)
   })
 })
