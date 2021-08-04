@@ -1,11 +1,14 @@
-// Copyright 2020 Henning Kerstan
-//
+// Project: @henningkerstan/byte
+// File: Byte.ts 
+// 
+// Copyright 2021 Henning Kerstan
+// 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-//
+// 
 //     http://www.apache.org/licenses/LICENSE-2.0
-//
+// 
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -13,7 +16,7 @@
 // limitations under the License.
 
 /**
- * A class implementing a representation of a Byte (Octet).
+ * A class implementing a representation of a byte (octet).
  */
 export class Byte {
   /** The internal representation (LSB0 bit ordering).
@@ -79,11 +82,15 @@ export class Byte {
    * @param begin Bit offset to be interpreted as MSB.
    * @param end Bit offset to be interpreted as LSB.
    */
-  public uIntMSB(begin = 0, end = 7): number {
+  public readUIntMSB(begin = 0, size: number = 8 - begin): number {
+    if (begin + size > 8) {
+      throw new Error('Out of bounds (begin + size exceeds 8)')
+    }
+
     // compute big endian representation
     let val = 0
-    for (let i = begin; i <= end; i++) {
-      val += this.getBit(i) << (end - i)
+    for (let i = begin; i < begin + size; i++) {
+      val += this.getBit(i) << (begin + size - i)
     }
 
     return val
@@ -147,8 +154,8 @@ export class Byte {
     s += '  uIntLSB(): ' + this.readUIntLSB().toString()
     s += ' (0x' + this.readUIntLSB().toString(16).toUpperCase() + ')'
     s += ', '
-    s += '  uIntMSB(): ' + this.uIntMSB().toString()
-    s += ' (0x' + this.uIntMSB().toString(16).toUpperCase() + ')\n'
+    s += '  uIntMSB(): ' + this.readUIntMSB().toString()
+    s += ' (0x' + this.readUIntMSB().toString(16).toUpperCase() + ')\n'
     s += '}'
 
     return s
