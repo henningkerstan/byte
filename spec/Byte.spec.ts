@@ -34,16 +34,18 @@ describe('A Byte', () => {
     }
   })
 
-  it('shall satisfy byte.',()=>{
+  it('shall satisfy byte.', () => {
     const byte = new Byte(0)
     for (let i = 0; i <= 255; i++) {
       byte.writeUIntLSB(i)
-      expect(byte.toBinaryStringLSB()).toBe(byte.toBinaryStringMSB().split("").reverse().join(""))
+      expect(byte.toBinaryStringLSB()).toBe(
+        byte.toBinaryStringMSB().split('').reverse().join(''),
+      )
     }
   })
 
   it('shall satisfy some sanity tests', () => {
-    const byte = new Byte(123) 
+    const byte = new Byte(123)
     // in LSB: 11011110
     // in MSB: 01111011
 
