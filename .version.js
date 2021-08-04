@@ -18,6 +18,7 @@
 const packageJson = require('./package.json')
 const { exec, execSync } = require("child_process");
 const { exit } = require('process');
+const fs = require('fs')
 
 
 console.log('Executing tasks to bump new version')
@@ -55,4 +56,5 @@ execSync('git stash apply')
 // generate and commit documentation for the new version
 console.log('Generating and staging documentation for version ' + packageJson.version)
 execSync('npm run doc')
+fs.writeFileSync('docs/.nojekyll', '')
 execSync('git add -A docs/*')
