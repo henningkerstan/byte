@@ -4,7 +4,7 @@
   "description": "A TypeScript implementation of a byte (octet) allowing easy bit manipulation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No test specified\"",
     "doc": "npx typedoc",
     "build": "npx tsc",
     "all": "npm run build && npm run doc",
