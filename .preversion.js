@@ -67,7 +67,6 @@ execSync('npm run test')
 console.log('Checking modules can be built')
 execSync('npm run build')
 
-
 // check that the previous commands did not lead to changes
 console.log('Checking that previous steps did not lead to unclean branch')
 const newGitStatus = execSync('git status --porcelain')
