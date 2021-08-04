@@ -80,5 +80,5 @@ if(newGitStatus.toString() !== ""){
 console.log('Checking documentation can be built')
 fs.renameSync('docs', 'docs.SAVE')
 execSync('npm run doc')
-fs.rmdirSync('docs.SAVE', { recursive: true })
+fs.renameSync('docs.SAVE', { recursive: true })
 fs.renameSync('docs.SAVE', 'docs')
