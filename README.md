@@ -5,6 +5,7 @@ A TypeScript implementation of a byte (octet) allowing easy bit manipulations.
 This library provides a simple implementation of a byte (aka octet) in a TypeScript class. I developed this "library" (which consists of merely one TypeScript class) for two purposes:
 - for use in my EnOcean-Core library and associated files, and
 - to understand, test and (hopefully) streamline my development process for more complex projects. 
+
 Hence: Feel free to use it, if it helps, but do not expect rocket science. :)
 
 
