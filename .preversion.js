@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const { execSync } = require("child_process")
+const { execSync } = require('child_process')
 const { exit } = require('process')
 const fs = require('fs')
 
@@ -23,7 +23,7 @@ console.log('Executing preversion tests.')
 
 // determine current branch
 let branch = execSync('git branch --show-current').toString()
-branch = branch.replace(/(\r\n|\n|\r)/gm,'');
+branch = branch.replace(/(\r\n|\n|\r)/gm,'')
 console.log('On git branch "' + branch + '"')
 
 // check that we are not running from main branch

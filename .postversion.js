@@ -44,4 +44,3 @@ execSync('git checkout -b ' + nextBranch)
 execSync('git push --set-upstream origin ' + nextBranch)
 
 console.log('All done - consider (re)linking with "npm link"')
-//execSync('npm link')

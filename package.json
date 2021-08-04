@@ -4,7 +4,7 @@
   "description": "A TypeScript implementation of a byte (octet) allowing easy bit manipulation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No test specified\"",
+    "test": "npx jasmine-ts --config=jasmine.json",
     "doc": "npx typedoc",
     "build": "npx tsc",
     "all": "npm run build && npm run doc",

@@ -53,6 +53,6 @@ execSync('git stash apply')
 
 
 // generate and commit documentation for the new version
-console.log('Generating and staging documentation')
+console.log('Generating and staging documentation for version ' + packageJson.version)
 execSync('npm run doc')
 execSync('git add -A docs/*')
