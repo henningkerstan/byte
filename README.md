@@ -12,7 +12,7 @@ Hence: Feel free to use it, if it helps, but do not expect rocket science. :)
 ## 2. Installation
 This library is available as a Node.js-module. You can thus use Node.js' package manager `npm` to install the latest production version from the [npm registry](https://npmjs.com) by executing
 
-    npm install @henningkerstan/byte
+    npm i @henningkerstan/byte
 
 in your Node.js project's repository. This library does not require/install any dependencies.
 
@@ -29,7 +29,7 @@ import { Byte } from "@henningkerstan/byte"
 ```
 
 ### 3.2 Examples
-Here are some toy examples - you can also have a look at the Jasmine spec (aka test script) for more examples.
+Here are some toy examples - you can also have a look at the [Jasmine spec (aka test script)](https://github.com/henningkerstan/byte/blob/main/spec/Byte.spec.ts) for more examples.
 ```typescript
 const byte1 = Byte.allZero()
 byte1.setBit(1, 3)
