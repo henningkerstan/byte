@@ -8,14 +8,12 @@
   "main": "./lib/Byte.js",
   "types": "./lib/Byte.d.ts",
   "scripts": {
+    "lint": "eslint --ignore-path .gitignore --fix src/**/*.ts spec/**/*.ts",
     "test": "npx jasmine-ts --config=jasmine.json",
     "doc": "npx typedoc",
     "build": "npx tsc",
     "all": "npm run lint && npm run test && npm run build && npm run doc",
-    "lint": "eslint --ignore-path .gitignore --fix src/**/*.ts spec/**/*.ts",
-    "preversion": "node .preversion",
-    "version": "node .version.js",
-    "postversion": "node .postversion.js"
+    "prepare": "npm run all"
   },
   "repository": {
     "type": "git",
