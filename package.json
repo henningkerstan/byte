@@ -13,7 +13,7 @@
     "doc": "npx typedoc",
     "build": "npx tsc",
     "all": "npm run lint && npm run test && npm run build && npm run doc",
-    "prepare": "npm run all"
+    "prepublishOnly": "npm run all"
   },
   "repository": {
     "type": "git",
