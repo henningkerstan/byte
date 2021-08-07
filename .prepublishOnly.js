@@ -16,27 +16,17 @@
 // limitations under the License.
 
 const packageJson = require('./package.json')
-const { exec, execSync } = require("child_process");
-const { exit } = require('process');
+const { execSync } = require("child_process");
 const fs = require('fs')
 
-
-console.log('Preparing to publish')
-
-// run linter
-console.log('Running linter/static code analysis')
-execSync('npm run lint')
-
-// run test
-console.log('Running test scripts')
-execSync('npm run test')
-
 // run build
-console.log('Building library')
+console.log('Building library v' + packageJson.version)
 execSync('npm run build')
 
 // generate and commit documentation for the new version
-console.log('Generating and staging documentation for version ' + packageJson.version)
+console.log('Generating documentation for library v' + packageJson.version)
 execSync('npm run doc')
+console.log('Creating ".nojekyll" file')
 fs.writeFileSync('docs/.nojekyll', '')
+console.log('Staging documentation')
 execSync('git add -A docs/*')
