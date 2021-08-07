@@ -14,7 +14,8 @@
     "doc": "npx typedoc",
     "build": "npx tsc",
     "all": "npm run lint && npm run test && npm run build && npm run doc",
-    "prepublishOnly": "node .prepublishOnly.js"
+    "prepublishOnly": "node .prepublishOnly.js",
+    "version": "node .version.js"
   },
   "repository": {
     "type": "git",

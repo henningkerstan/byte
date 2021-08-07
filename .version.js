@@ -20,41 +20,26 @@ const { exec, execSync } = require("child_process");
 const { exit } = require('process');
 const fs = require('fs')
 
-
-console.log('Executing tasks to bump new version')
-
 // determine current branch
 let branch = execSync('git branch --show-current').toString()
 branch = branch.replace(/(\r\n|\n|\r)/gm,'');
 
+console.log('Version v' + packageJson.version)
 
-// check that we are not running from main branch
-if (branch === 'main'){
-  console.log('Cannot run from main branch')
+// check that we are running from main branch
+if (branch !== 'main'){
+  console.log('Cannot run from branch other than "main"')
   exit(-1)
 }
 
 // add new package.json
-console.log('Staging and stashing updated "package.json" file')
+console.log('Staging updated "package.json" file')
 execSync('git add package.json')
-execSync('git stash')
-
-
-// checkout main
-console.log('Checking out main branch')
-execSync('git checkout main')
-
-
-// merge into main but do not commit (will be done automatically by npm)
-console.log('Merging into main branch')
-execSync('git merge --no-ff --no-commit ' + branch)
-
-console.log('Apply stashed "package.json"')
-execSync('git stash apply')
-
 
 // generate and commit documentation for the new version
-console.log('Generating and staging documentation for version ' + packageJson.version)
+console.log('Generating documentation for library v' + packageJson.version)
 execSync('npm run doc')
+console.log('Creating ".nojekyll" file')
 fs.writeFileSync('docs/.nojekyll', '')
+console.log('Staging documentation')
 execSync('git add -A docs/*')

@@ -22,11 +22,3 @@ const fs = require('fs')
 // run build
 console.log('Building library v' + packageJson.version)
 execSync('npm run build')
-
-// generate and commit documentation for the new version
-console.log('Generating documentation for library v' + packageJson.version)
-execSync('npm run doc')
-console.log('Creating ".nojekyll" file')
-fs.writeFileSync('docs/.nojekyll', '')
-console.log('Staging documentation')
-execSync('git add -A docs/*')
