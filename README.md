@@ -48,4 +48,5 @@ Note that this project uses [semantic versioning](https://semver.org/).
 
 ## 5. License
 Copyright 2021 [Henning Kerstan](https://henningkerstan.de)
+
 SPDX-License-Identifier: Apache-2.0
