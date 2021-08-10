@@ -14,9 +14,10 @@
     "doc": "npx typedoc",
     "build": "npx tsc",
     "all": "npm run test && npm run build && npm run doc",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run license-checker && npm run build",
     "version": "node .version.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "license-checker": "npx license-checker --production --unknown --onlyAllow \"Apache-2.0;MIT;BSD;ISC\""
   },
   "repository": {
     "type": "git",
@@ -39,7 +40,6 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "^5.1.0",
     "husky": "^7.0.0",
-    "husky-init": "^7.0.0",
     "jasmine": "^3.8.0",
     "jasmine-spec-reporter": "^7.0.0",
     "jasmine-ts": "^0.4.0",
