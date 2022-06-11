@@ -45,7 +45,7 @@ export class Byte {
   /**
    * Set unsigned integer value with least significant bit first.
    * @param begin Bit offset to be interpreted as LSB.
-   * @param size Bit offset to be interpreted as MSB.
+   * @param size Size in bits; default is all remaining bits (8 - begin); must be >= 0 and satisfy (begin + size) <= 8.
    */
   public writeUIntLSB(
     value: number,
@@ -80,7 +80,7 @@ export class Byte {
   /**
    * Compute unsigned integer value with most significant bit first.
    * @param begin Bit offset to be interpreted as MSB.
-   * @param end Size in bits; default is all remaining bits (8 - begin); must be >= 0 and satisfy (begin + size) <= 8.
+   * @param size Size in bits; default is all remaining bits (8 - begin); must be >= 0 and satisfy (begin + size) <= 8.
    */
   public readUIntMSB(begin = 0, size: number = 8 - begin): number {
     if (begin + size > 8) {
